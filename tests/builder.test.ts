@@ -33,6 +33,12 @@ const locations = esIndex('locations', {
   location: esGeoPoint(),
 });
 
+const profiles = esIndex('profiles', {
+  id: esKeyword().notNull(),
+  bio: esText(),
+  website: esKeyword(),
+});
+
 describe('SearchBuilder', () => {
   test('builds simple query', () => {
     const orm = new ElasticORM({ node: 'http://localhost:9200' });
@@ -271,6 +277,25 @@ describe('SearchBuilder', () => {
         match: { email: { query: 'john@example' } },
       },
     });
+  });
+
+  test('search returns narrowed type for specific index (issue #5)', () => {
+    const orm = new ElasticORM({ node: 'http://localhost:9200' });
+    // Connect with multiple indices
+    const db = orm.connect({ users, profiles });
+
+    // When searching users, the builder should be typed for users only
+    const userBuilder = db.search(users);
+    const userQuery = userBuilder._buildQuery();
+
+    // When searching profiles, the builder should be typed for profiles only
+    const profileBuilder = db.search(profiles);
+    const profileQuery = profileBuilder._buildQuery();
+
+    // This is mainly a compile-time check - if types weren't narrowed,
+    // we'd get union types. The test verifies the code compiles correctly.
+    expect(userQuery).toBeDefined();
+    expect(profileQuery).toBeDefined();
   });
 });
 

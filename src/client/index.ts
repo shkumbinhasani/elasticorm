@@ -36,99 +36,122 @@ export class Database<Schemas extends SchemaMap> {
     private readonly schemas: Schemas
   ) {}
 
-  index<K extends keyof Schemas>(
-    index: Schemas[K]
-  ): IndexOperation<
-    Schemas[K]['$name'],
-    Schemas[K]['$fields']
-  > {
+  index<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
+  ): IndexOperation<Name, Fields> {
     return new IndexOperation(this.connection, index);
   }
 
-  async get<K extends keyof Schemas>(
-    index: Schemas[K],
+  async get<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>,
     id: string,
     options?: GetOptions
-  ): Promise<InferDocument<Schemas[K]['$fields']> | null> {
-    return getDocument(this.connection, index, id, options) as Promise<InferDocument<Schemas[K]['$fields']> | null>;
+  ): Promise<InferDocument<Fields> | null> {
+    return getDocument(this.connection, index, id, options) as Promise<InferDocument<Fields> | null>;
   }
 
-  async getWithMeta<K extends keyof Schemas>(
-    index: Schemas[K],
+  async getWithMeta<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>,
     id: string,
     options?: GetOptions
-  ): Promise<GetResponse<InferDocument<Schemas[K]['$fields']>> | null> {
-    return getDocumentWithMeta(this.connection, index, id, options) as Promise<GetResponse<InferDocument<Schemas[K]['$fields']>> | null>;
+  ): Promise<GetResponse<InferDocument<Fields>> | null> {
+    return getDocumentWithMeta(this.connection, index, id, options) as Promise<GetResponse<InferDocument<Fields>> | null>;
   }
 
-  async mget<K extends keyof Schemas>(
-    index: Schemas[K],
+  async mget<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>,
     ids: string[],
     options?: GetOptions
-  ): Promise<(InferDocument<Schemas[K]['$fields']> | null)[]> {
-    return multiGet(this.connection, index, ids, options) as Promise<(InferDocument<Schemas[K]['$fields']> | null)[]>;
+  ): Promise<(InferDocument<Fields> | null)[]> {
+    return multiGet(this.connection, index, ids, options) as Promise<(InferDocument<Fields> | null)[]>;
   }
 
-  update<K extends keyof Schemas>(
-    index: Schemas[K],
+  update<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>,
     id: string
-  ): UpdateOperation<
-    Schemas[K]['$name'],
-    Schemas[K]['$fields']
-  > {
+  ): UpdateOperation<Name, Fields> {
     return new UpdateOperation(this.connection, index, id);
   }
 
-  async delete<K extends keyof Schemas>(
-    index: Schemas[K],
+  async delete<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>,
     id: string,
     options?: DeleteOptions
   ): Promise<DeleteResponse> {
     return deleteDocument(this.connection, index, id, options);
   }
 
-  bulk<K extends keyof Schemas>(
-    index: Schemas[K]
-  ): BulkOperation<
-    Schemas[K]['$name'],
-    Schemas[K]['$fields']
-  > {
+  bulk<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
+  ): BulkOperation<Name, Fields> {
     return new BulkOperation(this.connection, index);
   }
 
-  search<K extends keyof Schemas>(
-    index: Schemas[K]
-  ): SearchBuilder<
-    Schemas[K]['$name'],
-    Schemas[K]['$fields'],
-    InferDocument<Schemas[K]['$fields']>
-  > {
+  search<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
+  ): SearchBuilder<Name, Fields, InferDocument<Fields>> {
     return new SearchBuilder(this.connection, index);
   }
 
-  async createIndex<K extends keyof Schemas>(
-    index: Schemas[K]
+  async createIndex<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
   ): Promise<{ acknowledged: boolean; shards_acknowledged: boolean; index: string }> {
     const path = `/${index.$name}`;
     return this.connection.put(path, index._toIndexBody());
   }
 
-  async updateMapping<K extends keyof Schemas>(
-    index: Schemas[K]
+  async updateMapping<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
   ): Promise<{ acknowledged: boolean }> {
     const path = `/${index.$name}/_mapping`;
     return this.connection.put(path, index._toMappings());
   }
 
-  async deleteIndex<K extends keyof Schemas>(
-    index: Schemas[K]
+  async deleteIndex<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
   ): Promise<{ acknowledged: boolean }> {
     const path = `/${index.$name}`;
     return this.connection.delete(path);
   }
 
-  async indexExists<K extends keyof Schemas>(
-    index: Schemas[K]
+  async indexExists<
+    Name extends string,
+    Fields extends Record<string, ESField<any, any, any, any, any>>
+  >(
+    index: ESIndex<Name, Fields>
   ): Promise<boolean> {
     return this.connection.head(`/${index.$name}`);
   }
