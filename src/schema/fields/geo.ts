@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { GeoPointFieldOptions, GeoShapeFieldOptions, GeoPoint, GeoShape } from '../types.ts';
+import { ESField } from './base';
+import type { GeoPointFieldOptions, GeoShapeFieldOptions, GeoPoint, GeoShape } from '../types';
 
 export class ESGeoPointField<
   Required extends boolean = false,

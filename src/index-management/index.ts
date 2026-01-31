@@ -1,6 +1,6 @@
-import type { ElasticConnection } from '../client/connection.ts';
-import type { ESIndex } from '../schema/index-builder.ts';
-import type { ESField } from '../schema/fields/base.ts';
+import type { ElasticConnection } from '../client/connection';
+import type { ESIndex } from '../schema/index-builder';
+import type { ESField } from '../schema/fields/base';
 
 export interface IndexInfo {
   aliases: Record<string, unknown>;

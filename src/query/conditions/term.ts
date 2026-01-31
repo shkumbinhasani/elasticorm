@@ -1,5 +1,5 @@
-import type { ESField } from '../../schema/fields/base.ts';
-import type { QueryCondition } from '../types.ts';
+import type { ESField } from '../../schema/fields/base';
+import type { QueryCondition } from '../types';
 
 export class TermCondition implements QueryCondition {
   constructor(

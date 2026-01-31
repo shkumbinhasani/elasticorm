@@ -1,16 +1,16 @@
-import { ElasticConnection, type ElasticORMConfig } from './connection.ts';
-import { ESIndex } from '../schema/index-builder.ts';
-import { IndexOperation, type IndexOptions, type IndexResponse } from './operations/index-op.ts';
-import { getDocument, getDocumentWithMeta, multiGet, type GetOptions, type GetResponse } from './operations/get.ts';
-import { UpdateOperation, type UpdateOptions } from './operations/update.ts';
-import { deleteDocument, type DeleteOptions, type DeleteResponse } from './operations/delete.ts';
-import { BulkOperation, type BulkOptions, type BulkResponse } from './operations/bulk.ts';
-import { SearchBuilder } from '../query/builder.ts';
-import type { ESField } from '../schema/fields/base.ts';
-import type { InferDocument, InferInsertDocument } from '../schema/types.ts';
+import { ElasticConnection, type ElasticORMConfig } from './connection';
+import { ESIndex } from '../schema/index-builder';
+import { IndexOperation, type IndexOptions, type IndexResponse } from './operations/index-op';
+import { getDocument, getDocumentWithMeta, multiGet, type GetOptions, type GetResponse } from './operations/get';
+import { UpdateOperation, type UpdateOptions } from './operations/update';
+import { deleteDocument, type DeleteOptions, type DeleteResponse } from './operations/delete';
+import { BulkOperation, type BulkOptions, type BulkResponse } from './operations/bulk';
+import { SearchBuilder } from '../query/builder';
+import type { ESField } from '../schema/fields/base';
+import type { InferDocument, InferInsertDocument } from '../schema/types';
 
-export { type ElasticORMConfig, ElasticError } from './connection.ts';
-export * from './operations/index.ts';
+export { type ElasticORMConfig, ElasticError } from './connection';
+export * from './operations/index';
 
 export type SchemaMap = Record<string, ESIndex<any, any>>;
 

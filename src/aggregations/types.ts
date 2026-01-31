@@ -27,15 +27,15 @@ export type InferAggregationResult<A> =
   A extends TopHitsAggregation ? TopHitsAggregationResult :
   Record<string, unknown>;
 
-import type { TermsAggregation } from './bucket/terms.ts';
-import type { HistogramAggregation, DateHistogramAggregation } from './bucket/histogram.ts';
-import type { RangeAggregation } from './bucket/range.ts';
-import type { FilterAggregation, FiltersAggregation } from './bucket/filter.ts';
-import type { NestedAggregation } from './bucket/nested.ts';
-import type { AvgAggregation, SumAggregation, MinAggregation, MaxAggregation, ValueCountAggregation, CardinalityAggregation } from './metric/basic.ts';
-import type { StatsAggregation, ExtendedStatsAggregation } from './metric/stats.ts';
-import type { PercentilesAggregation, PercentileRanksAggregation } from './metric/percentiles.ts';
-import type { TopHitsAggregation } from './metric/top-hits.ts';
+import type { TermsAggregation } from './bucket/terms';
+import type { HistogramAggregation, DateHistogramAggregation } from './bucket/histogram';
+import type { RangeAggregation } from './bucket/range';
+import type { FilterAggregation, FiltersAggregation } from './bucket/filter';
+import type { NestedAggregation } from './bucket/nested';
+import type { AvgAggregation, SumAggregation, MinAggregation, MaxAggregation, ValueCountAggregation, CardinalityAggregation } from './metric/basic';
+import type { StatsAggregation, ExtendedStatsAggregation } from './metric/stats';
+import type { PercentilesAggregation, PercentileRanksAggregation } from './metric/percentiles';
+import type { TopHitsAggregation } from './metric/top-hits';
 
 export interface TermsBucket {
   key: string | number;

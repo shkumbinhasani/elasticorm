@@ -1,4 +1,4 @@
-import type { QueryCondition } from '../types.ts';
+import type { QueryCondition } from '../types';
 
 export class BoolCondition implements QueryCondition {
   private _must: QueryCondition[] = [];

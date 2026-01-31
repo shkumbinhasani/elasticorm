@@ -1,8 +1,8 @@
-import type { ElasticConnection } from '../connection.ts';
-import type { ESIndex } from '../../schema/index-builder.ts';
-import type { InferDocument } from '../../schema/types.ts';
-import type { ESField } from '../../schema/fields/base.ts';
-import { ElasticError } from '../connection.ts';
+import type { ElasticConnection } from '../connection';
+import type { ESIndex } from '../../schema/index-builder';
+import type { InferDocument } from '../../schema/types';
+import type { ESField } from '../../schema/fields/base';
+import { ElasticError } from '../connection';
 
 export interface GetResponse<T> {
   _index: string;

@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { BooleanFieldOptions } from '../types.ts';
+import { ESField } from './base';
+import type { BooleanFieldOptions } from '../types';
 
 export class ESBooleanField<
   Required extends boolean = false,

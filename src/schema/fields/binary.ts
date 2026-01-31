@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { FieldMappingOptions } from '../types.ts';
+import { ESField } from './base';
+import type { FieldMappingOptions } from '../types';
 
 export class ESBinaryField<
   Required extends boolean = false,

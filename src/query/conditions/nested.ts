@@ -1,6 +1,6 @@
-import type { QueryCondition } from '../types.ts';
-import type { ESNestedField } from '../../schema/fields/nested.ts';
-import type { ESField } from '../../schema/fields/base.ts';
+import type { QueryCondition } from '../types';
+import type { ESNestedField } from '../../schema/fields/nested';
+import type { ESField } from '../../schema/fields/base';
 
 export class NestedQueryCondition implements QueryCondition {
   constructor(

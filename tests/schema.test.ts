@@ -11,7 +11,7 @@ import {
   esObject,
   esGeoPoint,
   esIp,
-} from '../src/index.ts';
+} from '../src/index';
 
 describe('Schema Definition', () => {
   test('creates basic index with fields', () => {

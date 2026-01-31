@@ -1,8 +1,8 @@
-import type { ElasticConnection } from '../client/connection.ts';
-import type { ESIndex } from '../schema/index-builder.ts';
-import type { ESField } from '../schema/fields/base.ts';
-import type { QueryCondition, SearchResponse, SortOption, HighlightOptions, SourceFilter } from './types.ts';
-import type { Aggregation, AggregationResult } from '../aggregations/types.ts';
+import type { ElasticConnection } from '../client/connection';
+import type { ESIndex } from '../schema/index-builder';
+import type { ESField } from '../schema/fields/base';
+import type { QueryCondition, SearchResponse, SortOption, HighlightOptions, SourceFilter } from './types';
+import type { Aggregation, AggregationResult } from '../aggregations/types';
 
 export class SearchBuilder<
   Name extends string,

@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { DateFieldOptions } from '../types.ts';
+import { ESField } from './base';
+import type { DateFieldOptions } from '../types';
 
 export class ESDateField<
   Required extends boolean = false,

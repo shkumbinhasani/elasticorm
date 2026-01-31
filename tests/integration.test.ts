@@ -20,7 +20,7 @@ import {
   sum,
   dateHistogram,
   matchAll,
-} from '../src/index.ts';
+} from '../src/index';
 
 const ES_URL = process.env.ES_URL || 'http://localhost:9201';
 

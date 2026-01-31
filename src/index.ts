@@ -3,7 +3,7 @@ export {
   esIndex,
   ESIndex,
   type IndexSettings,
-} from './schema/index-builder.ts';
+} from './schema/index-builder';
 
 export {
   ESField,
@@ -26,7 +26,7 @@ export {
   esIp,
   esBinary,
   type ESFieldConfig,
-} from './schema/fields/index.ts';
+} from './schema/fields/index';
 
 export {
   type ESFieldType,
@@ -43,7 +43,7 @@ export {
   type GeoShapeFieldOptions,
   type NestedFieldOptions,
   type ObjectFieldOptions,
-} from './schema/types.ts';
+} from './schema/types';
 
 // Client exports
 export {
@@ -51,9 +51,9 @@ export {
   Database,
   type ElasticORMConfig,
   type SchemaMap,
-} from './client/index.ts';
+} from './client/index';
 
-export { ElasticError, ElasticConnection } from './client/connection.ts';
+export { ElasticError, ElasticConnection } from './client/connection';
 
 export {
   type IndexResponse,
@@ -68,10 +68,10 @@ export {
   type BulkResponseItem,
   type BulkItemResult,
   type BulkOptions,
-} from './client/operations/index.ts';
+} from './client/operations/index';
 
 // Query exports
-export { SearchBuilder } from './query/builder.ts';
+export { SearchBuilder } from './query/builder';
 
 export {
   eq,
@@ -115,7 +115,7 @@ export {
   type MatchPhrasePrefixOptions,
   type MultiMatchOptions,
   type RangeOptions,
-} from './query/conditions/index.ts';
+} from './query/conditions/index';
 
 export {
   type QueryCondition,
@@ -124,7 +124,7 @@ export {
   type SortOption,
   type HighlightOptions,
   type SourceFilter,
-} from './query/types.ts';
+} from './query/types';
 
 // Aggregation exports
 export {
@@ -149,7 +149,7 @@ export {
   type DateHistogramAggregationOptions,
   type CalendarInterval,
   type RangeBucketDefinition,
-} from './aggregations/bucket/index.ts';
+} from './aggregations/bucket/index';
 
 export {
   avg,
@@ -173,7 +173,7 @@ export {
   type StatsAggregationOptions,
   type PercentilesAggregationOptions,
   type TopHitsAggregationOptions,
-} from './aggregations/metric/index.ts';
+} from './aggregations/metric/index';
 
 export {
   type Aggregation,
@@ -191,7 +191,7 @@ export {
   type PercentilesAggregationResult,
   type PercentileRanksAggregationResult,
   type TopHitsAggregationResult,
-} from './aggregations/types.ts';
+} from './aggregations/types';
 
 // Index management exports
 export {
@@ -217,4 +217,4 @@ export {
   type DeleteIndexResponse,
   type RefreshResponse,
   type FlushResponse,
-} from './index-management/index.ts';
+} from './index-management/index';

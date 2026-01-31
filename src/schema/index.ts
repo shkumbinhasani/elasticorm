@@ -1,3 +1,3 @@
-export * from './fields/index.ts';
-export * from './index-builder.ts';
-export * from './types.ts';
+export * from './fields/index';
+export * from './index-builder';
+export * from './types';

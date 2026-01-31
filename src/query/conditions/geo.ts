@@ -1,6 +1,6 @@
-import type { ESField } from '../../schema/fields/base.ts';
-import type { QueryCondition } from '../types.ts';
-import type { GeoPoint } from '../../schema/types.ts';
+import type { ESField } from '../../schema/fields/base';
+import type { QueryCondition } from '../types';
+import type { GeoPoint } from '../../schema/types';
 
 export class GeoBoundingBoxCondition implements QueryCondition {
   constructor(

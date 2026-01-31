@@ -15,7 +15,7 @@ import {
   match,
   avg,
   terms,
-} from '../src/index.ts';
+} from '../src/index';
 
 const users = esIndex('users', {
   id: esKeyword().notNull(),

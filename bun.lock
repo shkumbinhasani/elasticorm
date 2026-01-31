@@ -5,6 +5,7 @@
       "name": "elasticorm",
       "devDependencies": {
         "@types/bun": "latest",
+        "typescript": "^5.3.0",
       },
       "peerDependencies": {
         "typescript": "^5",

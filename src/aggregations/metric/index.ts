@@ -17,7 +17,7 @@ export {
   medianAbsoluteDeviation,
   type MetricAggregationOptions,
   type CardinalityAggregationOptions,
-} from './basic.ts';
+} from './basic';
 
 export {
   StatsAggregation,
@@ -30,7 +30,7 @@ export {
   matrixStats,
   type StatsAggregationOptions,
   type ExtendedStatsAggregationOptions,
-} from './stats.ts';
+} from './stats';
 
 export {
   PercentilesAggregation,
@@ -42,7 +42,7 @@ export {
   type PercentilesAggregationOptions,
   type PercentileRanksAggregationOptions,
   type BoxplotAggregationOptions,
-} from './percentiles.ts';
+} from './percentiles';
 
 export {
   TopHitsAggregation,
@@ -51,4 +51,4 @@ export {
   topMetrics,
   type TopHitsAggregationOptions,
   type TopMetricsAggregationOptions,
-} from './top-hits.ts';
+} from './top-hits';

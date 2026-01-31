@@ -1,6 +1,6 @@
-import type { Aggregation } from '../types.ts';
-import type { ESNestedField } from '../../schema/fields/nested.ts';
-import type { ESField } from '../../schema/fields/base.ts';
+import type { Aggregation } from '../types';
+import type { ESNestedField } from '../../schema/fields/nested';
+import type { ESField } from '../../schema/fields/base';
 
 export class NestedAggregation implements Aggregation {
   private _subAggregations?: Record<string, Aggregation>;

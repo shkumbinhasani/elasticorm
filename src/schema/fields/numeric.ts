@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { ESFieldType, NumericFieldOptions } from '../types.ts';
+import { ESField } from './base';
+import type { ESFieldType, NumericFieldOptions } from '../types';
 
 type NumericESType = 'integer' | 'long' | 'short' | 'byte' | 'double' | 'float' | 'half_float' | 'scaled_float';
 

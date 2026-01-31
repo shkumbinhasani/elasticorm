@@ -1,5 +1,5 @@
-import type { ESField } from './fields/base.ts';
-import type { InferDocument, InferInsertDocument, Prettify } from './types.ts';
+import type { ESField } from './fields/base';
+import type { InferDocument, InferInsertDocument, Prettify } from './types';
 
 export interface IndexSettings {
   number_of_shards?: number;

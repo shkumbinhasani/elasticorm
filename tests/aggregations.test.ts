@@ -15,7 +15,7 @@ import {
   stats,
   filterAgg,
   eq,
-} from '../src/index.ts';
+} from '../src/index';
 
 const products = esIndex('products', {
   id: esKeyword().notNull(),

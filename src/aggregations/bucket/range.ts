@@ -1,5 +1,5 @@
-import type { ESField } from '../../schema/fields/base.ts';
-import type { Aggregation } from '../types.ts';
+import type { ESField } from '../../schema/fields/base';
+import type { Aggregation } from '../types';
 
 export interface RangeBucketDefinition {
   key?: string;

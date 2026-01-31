@@ -1,4 +1,4 @@
-import type { Aggregation } from '../types.ts';
+import type { Aggregation } from '../types';
 
 export interface TopHitsAggregationOptions {
   size?: number;

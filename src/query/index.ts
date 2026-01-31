@@ -1,3 +1,3 @@
-export { SearchBuilder } from './builder.ts';
-export * from './conditions/index.ts';
-export * from './types.ts';
+export { SearchBuilder } from './builder';
+export * from './conditions/index';
+export * from './types';

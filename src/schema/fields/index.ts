@@ -1,6 +1,6 @@
-export { ESField, type ESFieldConfig } from './base.ts';
-export { ESTextField, esText } from './text.ts';
-export { ESKeywordField, esKeyword } from './keyword.ts';
+export { ESField, type ESFieldConfig } from './base';
+export { ESTextField, esText } from './text';
+export { ESKeywordField, esKeyword } from './keyword';
 export {
   ESNumericField,
   esInteger,
@@ -11,11 +11,11 @@ export {
   esFloat,
   esHalfFloat,
   esScaledFloat,
-} from './numeric.ts';
-export { ESDateField, esDate } from './date.ts';
-export { ESBooleanField, esBoolean } from './boolean.ts';
-export { ESNestedField, esNested, createNestedAccessor } from './nested.ts';
-export { ESObjectField, esObject } from './object.ts';
-export { ESGeoPointField, ESGeoShapeField, esGeoPoint, esGeoShape } from './geo.ts';
-export { ESIpField, esIp } from './ip.ts';
-export { ESBinaryField, esBinary } from './binary.ts';
+} from './numeric';
+export { ESDateField, esDate } from './date';
+export { ESBooleanField, esBoolean } from './boolean';
+export { ESNestedField, esNested, createNestedAccessor } from './nested';
+export { ESObjectField, esObject } from './object';
+export { ESGeoPointField, ESGeoShapeField, esGeoPoint, esGeoShape } from './geo';
+export { ESIpField, esIp } from './ip';
+export { ESBinaryField, esBinary } from './binary';

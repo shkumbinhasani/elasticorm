@@ -1,3 +1,3 @@
-export * from './types.ts';
-export * from './bucket/index.ts';
-export * from './metric/index.ts';
+export * from './types';
+export * from './bucket/index';
+export * from './metric/index';

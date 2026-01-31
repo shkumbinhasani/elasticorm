@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { KeywordFieldOptions } from '../types.ts';
+import { ESField } from './base';
+import type { KeywordFieldOptions } from '../types';
 
 export class ESKeywordField<
   Required extends boolean = false,

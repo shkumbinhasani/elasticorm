@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { NestedFieldOptions, InferDocument } from '../types.ts';
+import { ESField } from './base';
+import type { NestedFieldOptions, InferDocument } from '../types';
 
 export class ESNestedField<
   Fields extends Record<string, ESField<any, any, any, any, any>>,

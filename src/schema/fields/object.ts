@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { ObjectFieldOptions, InferDocument } from '../types.ts';
+import { ESField } from './base';
+import type { ObjectFieldOptions, InferDocument } from '../types';
 
 export class ESObjectField<
   Fields extends Record<string, ESField<any, any, any, any, any>>,

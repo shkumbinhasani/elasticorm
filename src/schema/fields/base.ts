@@ -1,4 +1,4 @@
-import type { ESFieldType, FieldMappingOptions } from '../types.ts';
+import type { ESFieldType, FieldMappingOptions } from '../types';
 
 export interface ESFieldConfig<T, ESType extends ESFieldType = ESFieldType> {
   $type: T;

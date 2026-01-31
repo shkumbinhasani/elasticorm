@@ -8,7 +8,7 @@ export {
   type TermsAggregationOptions,
   type MultiTermsAggregationOptions,
   type SignificantTermsAggregationOptions,
-} from './terms.ts';
+} from './terms';
 
 export {
   HistogramAggregation,
@@ -21,7 +21,7 @@ export {
   type DateHistogramAggregationOptions,
   type AutoDateHistogramAggregationOptions,
   type CalendarInterval,
-} from './histogram.ts';
+} from './histogram';
 
 export {
   RangeAggregation,
@@ -36,7 +36,7 @@ export {
   type DateRangeAggregationOptions,
   type IpRangeBucketDefinition,
   type IpRangeAggregationOptions,
-} from './range.ts';
+} from './range';
 
 export {
   FilterAggregation,
@@ -50,11 +50,11 @@ export {
   missing,
   sampler,
   type FiltersAggregationOptions,
-} from './filter.ts';
+} from './filter';
 
 export {
   NestedAggregation,
   ReverseNestedAggregation,
   nestedAgg,
   reverseNested,
-} from './nested.ts';
+} from './nested';

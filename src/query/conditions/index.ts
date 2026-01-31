@@ -15,7 +15,7 @@ export {
   wildcard,
   regexp,
   fuzzy,
-} from './term.ts';
+} from './term';
 
 export {
   RangeCondition,
@@ -25,7 +25,7 @@ export {
   lt,
   lte,
   type RangeOptions,
-} from './range.ts';
+} from './range';
 
 export {
   MatchCondition,
@@ -44,7 +44,7 @@ export {
   type MatchPhraseOptions,
   type MatchPhrasePrefixOptions,
   type MultiMatchOptions,
-} from './match.ts';
+} from './match';
 
 export {
   BoolCondition,
@@ -67,7 +67,7 @@ export {
   boosting,
   constantScore,
   disMax,
-} from './bool.ts';
+} from './bool';
 
 export {
   NestedQueryCondition,
@@ -76,7 +76,7 @@ export {
   nested,
   hasChild,
   hasParent,
-} from './nested.ts';
+} from './nested';
 
 export {
   GeoBoundingBoxCondition,
@@ -87,4 +87,4 @@ export {
   geoDistance,
   geoPolygon,
   geoShape,
-} from './geo.ts';
+} from './geo';

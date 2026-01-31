@@ -1,5 +1,5 @@
-import { ESField } from './base.ts';
-import type { TextFieldOptions } from '../types.ts';
+import { ESField } from './base';
+import type { TextFieldOptions } from '../types';
 
 export class ESTextField<
   Required extends boolean = false,

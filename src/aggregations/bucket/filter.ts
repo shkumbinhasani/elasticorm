@@ -1,5 +1,5 @@
-import type { Aggregation } from '../types.ts';
-import type { QueryCondition } from '../../query/types.ts';
+import type { Aggregation } from '../types';
+import type { QueryCondition } from '../../query/types';
 
 export class FilterAggregation implements Aggregation {
   private _subAggregations?: Record<string, Aggregation>;

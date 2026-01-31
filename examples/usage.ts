@@ -18,7 +18,7 @@ import {
   terms,
   avg,
   dateHistogram,
-} from '../src/index.ts';
+} from '../src/index';
 
 // 1. Define index schemas (similar to Drizzle tables)
 export const users = esIndex('users', {
