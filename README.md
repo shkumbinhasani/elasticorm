@@ -3,7 +3,7 @@
 A type-safe Elasticsearch ORM for TypeScript, inspired by [Drizzle ORM](https://orm.drizzle.team/).
 
 ```typescript
-import { ElasticORM, esIndex, esText, esKeyword, esInteger, eq, match, bool, must, filter, range } from 'elasticorm';
+import { ElasticORM, esIndex, esText, esKeyword, esInteger, eq, match, bool, must, filter, range } from '@shkumbinhsn/elasticorm';
 
 // Define your schema
 const users = esIndex('users', {
@@ -38,9 +38,9 @@ const results = await db
 ## Installation
 
 ```bash
-bun add elasticorm
+bun add @shkumbinhsn/elasticorm
 # or
-npm install elasticorm
+npm install @shkumbinhsn/elasticorm
 ```
 
 ## Quick Start
@@ -56,7 +56,7 @@ import {
   esDate,
   esBoolean,
   esNested
-} from 'elasticorm';
+} from '@shkumbinhsn/elasticorm';
 
 export const users = esIndex('users', {
   id: esKeyword().notNull(),
@@ -81,7 +81,7 @@ type InsertUser = typeof users.$insert;
 ### 2. Connect to Elasticsearch
 
 ```typescript
-import { ElasticORM } from 'elasticorm';
+import { ElasticORM } from '@shkumbinhsn/elasticorm';
 
 const orm = new ElasticORM({
   node: 'http://localhost:9200',
@@ -129,7 +129,7 @@ await db.bulk(users).index([
 ### 4. Type-Safe Queries
 
 ```typescript
-import { eq, match, range, bool, must, filter, should } from 'elasticorm';
+import { eq, match, range, bool, must, filter, should } from '@shkumbinhsn/elasticorm';
 
 // Simple term query
 const results = await db
@@ -168,7 +168,7 @@ const count = await db
 ### 5. Aggregations
 
 ```typescript
-import { terms, avg, sum, dateHistogram } from 'elasticorm';
+import { terms, avg, sum, dateHistogram } from '@shkumbinhsn/elasticorm';
 
 const results = await db
   .search(users)

@@ -1,5 +1,5 @@
 {
-  "name": "elasticorm",
+  "name": "@shkumbinhsn/elasticorm",
   "version": "0.1.0",
   "description": "A type-safe Elasticsearch ORM for TypeScript, inspired by Drizzle ORM",
   "type": "module",
