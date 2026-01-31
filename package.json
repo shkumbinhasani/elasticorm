@@ -1,0 +1,19 @@
+{
+  "name": "elasticorm",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "test:unit": "bun test tests/schema.test.ts tests/query.test.ts tests/aggregations.test.ts tests/builder.test.ts",
+    "test:integration": "bun test tests/integration.test.ts",
+    "typecheck": "bunx tsc --noEmit",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

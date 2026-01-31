@@ -1,0 +1,90 @@
+export {
+  TermCondition,
+  TermsCondition,
+  ExistsCondition,
+  IdsCondition,
+  PrefixCondition,
+  WildcardCondition,
+  RegexpCondition,
+  FuzzyCondition,
+  eq,
+  inValues,
+  exists,
+  ids,
+  prefix,
+  wildcard,
+  regexp,
+  fuzzy,
+} from './term.ts';
+
+export {
+  RangeCondition,
+  range,
+  gt,
+  gte,
+  lt,
+  lte,
+  type RangeOptions,
+} from './range.ts';
+
+export {
+  MatchCondition,
+  MatchPhraseCondition,
+  MatchPhrasePrefixCondition,
+  MultiMatchCondition,
+  QueryStringCondition,
+  SimpleQueryStringCondition,
+  match,
+  matchPhrase,
+  matchPhrasePrefix,
+  multiMatch,
+  queryString,
+  simpleQueryString,
+  type MatchOptions,
+  type MatchPhraseOptions,
+  type MatchPhrasePrefixOptions,
+  type MultiMatchOptions,
+} from './match.ts';
+
+export {
+  BoolCondition,
+  MustClause,
+  FilterClause,
+  ShouldClause,
+  MustNotClause,
+  MatchAllCondition,
+  MatchNoneCondition,
+  BoostingCondition,
+  ConstantScoreCondition,
+  DisMaxCondition,
+  bool,
+  must,
+  filter,
+  should,
+  mustNot,
+  matchAll,
+  matchNone,
+  boosting,
+  constantScore,
+  disMax,
+} from './bool.ts';
+
+export {
+  NestedQueryCondition,
+  HasChildCondition,
+  HasParentCondition,
+  nested,
+  hasChild,
+  hasParent,
+} from './nested.ts';
+
+export {
+  GeoBoundingBoxCondition,
+  GeoDistanceCondition,
+  GeoPolygonCondition,
+  GeoShapeCondition,
+  geoBoundingBox,
+  geoDistance,
+  geoPolygon,
+  geoShape,
+} from './geo.ts';
