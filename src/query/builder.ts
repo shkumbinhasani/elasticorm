@@ -1,7 +1,7 @@
 import type { ElasticConnection } from '../client/connection';
 import type { ESIndex } from '../schema/index-builder';
 import type { ESField } from '../schema/fields/base';
-import type { QueryCondition, SearchResponse, SortOption, HighlightOptions, SourceFilter } from './types';
+import type { QueryCondition, SearchResponse, SortOption, GeoDistanceSortOption, RawSortOption, HighlightOptions, SourceFilter } from './types';
 import type { Aggregation, AggregationResult } from '../aggregations/types';
 
 export class SearchBuilder<
@@ -13,7 +13,7 @@ export class SearchBuilder<
   private _query?: QueryCondition;
   private _size?: number;
   private _from?: number;
-  private _sort: SortOption[] = [];
+  private _sort: (SortOption | GeoDistanceSortOption | RawSortOption)[] = [];
   private _source?: boolean | string[] | SourceFilter;
   private _highlight?: HighlightOptions;
   private _trackTotalHits?: boolean | number;
@@ -86,6 +86,34 @@ export class SearchBuilder<
 
   sortByDoc(order: 'asc' | 'desc' = 'asc'): this {
     this._sort.push({ field: '_doc', order });
+    return this;
+  }
+
+  sortGeoDistance<F extends ESField<any, 'geo_point', any, any, any>>(
+    field: F,
+    location: { lat: number; lon: number } | [number, number] | string,
+    options?: {
+      order?: 'asc' | 'desc';
+      unit?: 'km' | 'm' | 'mi' | 'yd' | 'ft' | 'nmi';
+      mode?: 'min' | 'max' | 'avg' | 'median';
+      distance_type?: 'arc' | 'plane';
+      ignore_unmapped?: boolean;
+    }
+  ): this {
+    this._sort.push({
+      field: field._getFullPath(),
+      location,
+      order: options?.order ?? 'asc',
+      unit: options?.unit,
+      mode: options?.mode,
+      distance_type: options?.distance_type,
+      ignore_unmapped: options?.ignore_unmapped,
+    } as GeoDistanceSortOption);
+    return this;
+  }
+
+  sortRaw(sortConfig: Record<string, unknown>): this {
+    this._sort.push({ raw: sortConfig } as RawSortOption);
     return this;
   }
 
@@ -196,6 +224,26 @@ export class SearchBuilder<
 
     if (this._sort.length > 0) {
       body.sort = this._sort.map((s) => {
+        // Raw sort - pass through as-is
+        if ('raw' in s) {
+          return (s as RawSortOption).raw;
+        }
+
+        // Geo distance sort
+        if ('location' in s) {
+          const geoSort = s as GeoDistanceSortOption;
+          const geoDistanceSort: Record<string, unknown> = {
+            [geoSort.field]: geoSort.location,
+            order: geoSort.order,
+          };
+          if (geoSort.unit) geoDistanceSort.unit = geoSort.unit;
+          if (geoSort.mode) geoDistanceSort.mode = geoSort.mode;
+          if (geoSort.distance_type) geoDistanceSort.distance_type = geoSort.distance_type;
+          if (geoSort.ignore_unmapped !== undefined) geoDistanceSort.ignore_unmapped = geoSort.ignore_unmapped;
+          return { _geo_distance: geoDistanceSort };
+        }
+
+        // Regular field sort
         const sortObj: Record<string, unknown> = {};
         if (s.field === '_score' || s.field === '_doc') {
           sortObj[s.field] = { order: s.order };

@@ -14,6 +14,20 @@ export interface SortOption {
   };
 }
 
+export interface GeoDistanceSortOption {
+  field: string;
+  location: { lat: number; lon: number } | [number, number] | string;
+  order: 'asc' | 'desc';
+  unit?: 'km' | 'm' | 'mi' | 'yd' | 'ft' | 'nmi';
+  mode?: 'min' | 'max' | 'avg' | 'median';
+  distance_type?: 'arc' | 'plane';
+  ignore_unmapped?: boolean;
+}
+
+export interface RawSortOption {
+  raw: Record<string, unknown>;
+}
+
 export interface SearchHit<T> {
   _index: string;
   _id: string;

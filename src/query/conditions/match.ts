@@ -260,7 +260,7 @@ export class SimpleQueryStringCondition implements QueryCondition {
   }
 }
 
-export function match<F extends ESField<string, 'text', any, any, any>>(
+export function match<F extends ESField<string, 'text' | 'keyword', any, any, any>>(
   field: F,
   query: string,
   options?: MatchOptions
@@ -268,7 +268,7 @@ export function match<F extends ESField<string, 'text', any, any, any>>(
   return new MatchCondition(field._getFullPath(), query, options);
 }
 
-export function matchPhrase<F extends ESField<string, 'text', any, any, any>>(
+export function matchPhrase<F extends ESField<string, 'text' | 'keyword', any, any, any>>(
   field: F,
   query: string,
   options?: MatchPhraseOptions
@@ -276,7 +276,7 @@ export function matchPhrase<F extends ESField<string, 'text', any, any, any>>(
   return new MatchPhraseCondition(field._getFullPath(), query, options);
 }
 
-export function matchPhrasePrefix<F extends ESField<string, 'text', any, any, any>>(
+export function matchPhrasePrefix<F extends ESField<string, 'text' | 'keyword', any, any, any>>(
   field: F,
   query: string,
   options?: MatchPhrasePrefixOptions

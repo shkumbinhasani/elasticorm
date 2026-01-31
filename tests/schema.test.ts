@@ -180,4 +180,31 @@ describe('Type Inference', () => {
 
     expect(insertUser.id).toBe('1');
   });
+
+  test('insert type accepts null for optional fields (database compatibility)', () => {
+    const profiles = esIndex('profiles', {
+      id: esKeyword().notNull(),
+      bio: esText(),
+      website: esKeyword(),
+    });
+
+    type InsertProfile = typeof profiles.$insert;
+
+    // This simulates data coming from a SQL database where nullable fields are null
+    const dbRecord = {
+      id: 'profile-1',
+      bio: null as string | null,
+      website: null as string | null,
+    };
+
+    // Should compile without error - null is accepted for optional fields
+    const insertProfile: InsertProfile = {
+      id: dbRecord.id,
+      bio: dbRecord.bio,
+      website: dbRecord.website,
+    };
+
+    expect(insertProfile.id).toBe('profile-1');
+    expect(insertProfile.bio).toBeNull();
+  });
 });

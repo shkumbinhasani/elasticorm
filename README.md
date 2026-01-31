@@ -137,8 +137,14 @@ const results = await db
   .where(eq(users.email, 'john@example.com'))
   .execute();
 
+// Access results (follows Elasticsearch response structure)
+console.log(results.hits.total.value);      // Total count
+console.log(results.hits.hits);             // Array of hits
+console.log(results.hits.hits[0]._source);  // First document
+console.log(results.hits.hits[0]._id);      // Document ID
+
 // Full-text search
-const results = await db
+const results2 = await db
   .search(users)
   .where(match(users.name, 'john doe'))
   .execute();
@@ -251,6 +257,31 @@ esBoolean().default(true)  // Default value
 - `matchAll()` - Match all documents
 - `nested(field, query)` - Nested query
 - `geoDistance(field, point, distance)` - Geo distance
+
+### Sorting
+
+```typescript
+// Sort by field
+.sort(users.createdAt, 'desc')
+
+// Sort by score
+.sortByScore('desc')
+
+// Sort by geo distance (for location-based apps)
+.sortGeoDistance(users.location, { lat: 40.7128, lon: -74.0060 }, {
+  order: 'asc',
+  unit: 'km'
+})
+
+// Raw sort for complex configurations
+.sortRaw({
+  _geo_distance: {
+    location: { lat: 40.7, lon: -74 },
+    order: 'asc',
+    unit: 'km'
+  }
+})
+```
 
 ### Aggregations
 

@@ -6,6 +6,7 @@ import {
   esInteger,
   esDate,
   esBoolean,
+  esGeoPoint,
   ElasticORM,
   eq,
   bool,
@@ -24,6 +25,12 @@ const users = esIndex('users', {
   age: esInteger(),
   isActive: esBoolean().default(true),
   createdAt: esDate().default('now'),
+});
+
+const locations = esIndex('locations', {
+  id: esKeyword().notNull(),
+  name: esText(),
+  location: esGeoPoint(),
 });
 
 describe('SearchBuilder', () => {
@@ -188,6 +195,81 @@ describe('SearchBuilder', () => {
 
     expect(query).toEqual({
       min_score: 0.5,
+    });
+  });
+
+  test('builds query with geo distance sort', () => {
+    const orm = new ElasticORM({ node: 'http://localhost:9200' });
+    const db = orm.connect({ locations });
+
+    const builder = db
+      .search(locations)
+      .sortGeoDistance(locations.location, { lat: 40.7128, lon: -74.0060 }, {
+        order: 'asc',
+        unit: 'km',
+      });
+
+    const query = builder._buildQuery();
+
+    expect(query).toEqual({
+      sort: [
+        {
+          _geo_distance: {
+            location: { lat: 40.7128, lon: -74.0060 },
+            order: 'asc',
+            unit: 'km',
+          },
+        },
+      ],
+    });
+  });
+
+  test('builds query with raw sort', () => {
+    const orm = new ElasticORM({ node: 'http://localhost:9200' });
+    const db = orm.connect({ locations });
+
+    const builder = db
+      .search(locations)
+      .sortRaw({
+        _geo_distance: {
+          location: { lat: 40.7, lon: -74 },
+          order: 'asc',
+          unit: 'mi',
+          distance_type: 'arc',
+        },
+      });
+
+    const query = builder._buildQuery();
+
+    expect(query).toEqual({
+      sort: [
+        {
+          _geo_distance: {
+            location: { lat: 40.7, lon: -74 },
+            order: 'asc',
+            unit: 'mi',
+            distance_type: 'arc',
+          },
+        },
+      ],
+    });
+  });
+
+  test('match() works on keyword fields', () => {
+    const orm = new ElasticORM({ node: 'http://localhost:9200' });
+    const db = orm.connect({ users });
+
+    // This should compile without error - match on keyword field
+    const builder = db
+      .search(users)
+      .where(match(users.email, 'john@example'));
+
+    const query = builder._buildQuery();
+
+    expect(query).toEqual({
+      query: {
+        match: { email: { query: 'john@example' } },
+      },
     });
   });
 });

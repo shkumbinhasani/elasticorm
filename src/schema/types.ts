@@ -56,7 +56,7 @@ export type InferInsertDocument<Fields extends Record<string, any>> = Prettify<
       ? Fields[K]['$hasDefault'] extends true
         ? K
         : never
-      : K]?: InferFieldType<Fields[K]>;
+      : K]?: InferFieldType<Fields[K]> | null;
   }
 >;
 
